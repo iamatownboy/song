@@ -37,7 +37,7 @@ body {
 }
 
 .container {
-    max-width: 1200px; /* 컨테이너 너비 확장 */
+    max-width: 1200px;
     margin: 0 auto;
     background-color: var(--card-bg);
     padding: 50px;
@@ -47,14 +47,8 @@ body {
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 header {
@@ -82,8 +76,7 @@ h1 {
 
 .photo-gallery {
     display: grid;
-    /* 사진이 많아졌으므로 최소 너비를 줄여 더 많은 사진이 한 줄에 보이게 함 */
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 25px;
     margin-bottom: 50px;
 }
@@ -99,23 +92,17 @@ h1 {
     flex-direction: column;
 }
 
-.photo-card.wide {
-    grid-column: 1 / -1; /* wide 카드는 항상 전체 너비를 차지하도록 설정 */
-}
-
-.photo-card:hover {
-    transform: translateY(-12px) scale(1.03);
-    box-shadow: 0 10px 30px var(--shadow-strong);
-}
+.photo-card.wide { grid-column: 1 / -1; }
 
 .photo-card img {
     width: 100%;
-    height: 480px; /* 모든 사진 높이 통일 */
+    height: 380px;
     object-fit: cover;
     display: block;
 }
+
 .photo-card.wide img {
-    height: auto; /* wide 카드 이미지는 비율에 맞게 높이 자동 조절 */
+    height: auto;
     max-height: 700px;
 }
 
@@ -129,7 +116,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 60px; /* 캡션 높이 최소값 설정 */
+    min-height: 60px;
 }
 
 .message {
@@ -170,11 +157,41 @@ footer {
     margin-top: 30px;
 }
 
+/* --- ▼ [새로 추가된 코드] 링크 스타일 --- */
+.gallery-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.gallery-link .photo-card:hover, .photo-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 10px 30px var(--shadow-strong);
+}
+
+.nav-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #333;
+    transform: translateY(-3px);
+}
+/* --- ▲ [새로 추가된 코드] 링크 스타일 --- */
+
 @media (max-width: 768px) {
     .container { padding: 30px; }
     h1 { font-size: 2.8em; }
     .subtitle { font-size: 1.1em; }
-    .photo-gallery { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .photo-gallery { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
     .message { padding: 30px; font-size: 1em; }
     .message h2 { font-size: 1.8em; }
 }
